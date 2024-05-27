@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Random Decide for Submitting
         id: random_decision
@@ -20,7 +20,7 @@ jobs:
 
       - name: Conditional commit
         if: env.should_commit == '1'
-        run: |
+        run:
           git config --local user.email "vestmax@mail.com"
           git config --local user.name "vtestla"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
